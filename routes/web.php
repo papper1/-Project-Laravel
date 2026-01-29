@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('home');
@@ -26,8 +27,8 @@ Route::prefix('product')->group(function () {
 });
 
 Route::get('/sinhvien/{name?}/{mssv?}', function (
-    $name = 'Luong Xuan Hieu',
-    $mssv = '123456'
+    $name = 'NguyenQuangThang',
+    $mssv = '0123567'
 ) {
     return view('sinhvien', compact('name', 'mssv'));
 })->name('sinhvien.info');
@@ -39,3 +40,10 @@ Route::get('/banco/{n}', function ($n) {
 Route::fallback(function () {
     return response()->view('error.404', [], 404);
 });
+
+Route::get('/register', [AuthController::class, 'showRegister']);
+Route::post('/register', [AuthController::class, 'register']);
+
+
+Route::get('/signin', [AuthController::class, 'SignIn']);
+Route::post('/signin', [AuthController::class, 'CheckSignIn']);
