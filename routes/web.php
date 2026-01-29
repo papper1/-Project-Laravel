@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Middleware\CheckAge;
+use App\Http\Controllers\AgeController;
+
+
 
 Route::get('/', function () {
     return view('home');
@@ -45,5 +49,14 @@ Route::get('/register', [AuthController::class, 'showRegister']);
 Route::post('/register', [AuthController::class, 'register']);
 
 
+
 Route::get('/signin', [AuthController::class, 'SignIn']);
 Route::post('/signin', [AuthController::class, 'CheckSignIn']);
+
+
+Route::get('/age', [AgeController::class, 'index']);
+Route::post('/save-age', [AgeController::class, 'saveAge']);
+
+Route::get('/restricted', function () {
+    return "Bạn đủ tuổi, được phép truy cập!";
+})->middleware(CheckAge::class);
