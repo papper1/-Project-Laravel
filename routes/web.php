@@ -7,6 +7,7 @@ use App\Http\Controllers\AgeController;
 
 
 
+
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -60,3 +61,8 @@ Route::post('/save-age', [AgeController::class, 'saveAge']);
 Route::get('/restricted', function () {
     return "Bạn đủ tuổi, được phép truy cập!";
 })->middleware(CheckAge::class);
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard.blade.dashboard');
+})->name('dashboard');
