@@ -547,4 +547,19 @@ return [
     */
 
     'livewire' => false,
+    [
+    'text' => 'Quản lý Danh mục',
+    'icon' => 'fas fa-list',
+    'submenu' => [
+        [
+            'text' => 'Xem danh sách',
+            'route' => 'category.index',
+        ],
+        [
+            'text' => 'Thêm mới',
+            'route' => 'category.create',
+        ],
+    ],
+],
+
 ];

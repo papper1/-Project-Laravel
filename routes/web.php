@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\CheckAge;
 use App\Http\Controllers\AgeController;
+use App\Http\Controllers\CategoryController;
 
 
 
@@ -66,3 +67,5 @@ Route::get('/restricted', function () {
 Route::get('/dashboard', function () {
     return view('dashboard.blade.dashboard');
 })->name('dashboard');
+
+Route::resource('category', CategoryController::class);
